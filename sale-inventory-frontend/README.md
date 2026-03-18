@@ -1,16 +1,83 @@
-# React + Vite
+# Sale Inventory Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application built to manage products, sales, invoices, and inventory in a simple and organized way.
 
-Currently, two official plugins are available:
+This project is being developed as part of my full-stack web development learning journey and practical portfolio building.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- User authentication (Register/Login)
+- Protected routes
+- Product management
+- Sales entry system
+- Invoice generation
+- Sales history
+- Inventory tracking
+- Responsive frontend UI
+- JWT-based authentication
+- REST API integration
+- Separate user-based data handling (in progress)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
+- React.js
+- React Router DOM
+- Axios
+- Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MySQL
+
+### Authentication
+- JWT (JSON Web Token)
+- bcrypt.js
+
+## Project Structure
+
+```bash
+Current Modules
+Authentication
+Users can register and log in securely. JWT token is generated after login and used for protected API access.
+
+Products
+Users can add and manage products with details like product name, price, stock, and HSN code.
+
+Sales
+Users can create a sale by selecting products, adding quantity, and generating total amount.
+
+Invoice
+After completing a sale, invoice data is shown with product details, quantity, price, and total amount. Invoice can also be printed.
+
+Sales History
+Sales records can be viewed for tracking previous transactions.
+
+Work in Progress
+This project is still under development. Some features are completed, and some are currently being improved.
+
+In Progress
+Currently working on user-specific data isolation so that each logged-in user can access and manage only their own data
+Better dashboard insights
+Improved validations and error handling
+UI/UX improvements
+Better invoice with proper details
+
+Future Improvements
+Role-based access control
+Separate user-specific products, customers, sales, and invoices
+Export invoice as PDF
+Analytics dashboard
+Search, filter, and pagination
+Better mobile responsiveness
+
+
+To run backend 
+npx nodemon server.js (run in terminal)
+
+for forntend
+npm run dev (run in terminal)
+

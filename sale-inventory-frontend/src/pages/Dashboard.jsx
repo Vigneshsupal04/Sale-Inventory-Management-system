@@ -1,29 +1,55 @@
 import { useEffect, useState } from "react";
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 
 function Dashboard() {
   const [totalSales, setTotalSales] = useState(0);
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalCustomers, setTotalCustomers] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
-  // const [dailySales, setDailySales] = useState([]);
-  // const [monthlySales, setMonthlySales] = useState([]);
+  const [monthlySales, setMonthlySales] = useState([]);
+  const [dailySales, setDailySales] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/dashboard", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Dashboard API:", data);
 
-        setTotalSales(Number(data.totalSales));
-        setTotalOrders(data.totalOrders);
-        setTotalCustomers(data.totalCustomers);
-        setTotalProducts(data.totalProducts);
-      });
-  }, []);
+  const token = localStorage.getItem("token");
+
+  // Dashboard totals
+  fetch("http://localhost:5000/api/dashboard", {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => {
+      setTotalSales(Number(data.totalSales));
+      setTotalOrders(data.totalOrders);
+      setTotalCustomers(data.totalCustomers);
+      setTotalProducts(data.totalProducts);
+    });
+
+    // Daily sales
+  fetch("http://localhost:5000/api/dashboard/daily-sales", {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => setDailySales(data));
+
+  // Monthly sales
+  fetch("http://localhost:5000/api/dashboard/monthly-sales", {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => setMonthlySales(data));
+
+}, []);
 
   return (
     <div className="p-6">
@@ -35,6 +61,35 @@ function Dashboard() {
         <Card title="Customers" value={totalCustomers} />
         <Card title="Products" value={totalProducts} />
       </div>
+
+      <div className="bg-white p-6 rounded shadow mt-6">
+        <h3>Daily Sales</h3>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={dailySales}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="sales" fill="#22c55e" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      
+      <div className="bg-white p-6 rounded shadow mt-6">
+        <h3>Monthly Sales</h3>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={monthlySales}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="sales" stroke="#4f46e5" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
     </div>
   );
 }
