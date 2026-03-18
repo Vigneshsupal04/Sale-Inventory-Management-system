@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <div className="h-auto md:h-14 bg-gray-800 text-white flex flex-col md:flex-row md:items-center justify-between px-4 md:px-6 py-2 md:py-0">
   <h1 className="font-semibold text-center md:text-left mb-2 md:mb-0">
-    Sale Inventory System
+    VIGNESH ENTERPRISES
   </h1>
 
   <div className="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4 items-center text-sm md:text-base">

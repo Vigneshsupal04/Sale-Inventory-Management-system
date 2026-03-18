@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require ("../config/db");
 
 // CREATE ORDER
 exports.createOrder = (req, res) => {

@@ -17,11 +17,11 @@ function Login() {
         password,
       });
 
-      // ✅ SAVE AUTH DATA
+      // SAVE AUTH DATA
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      // ✅ GO TO DASHBOARD
+      //  GO TO DASHBOARD
       navigate("/dashboard");
 
     } catch (err) {

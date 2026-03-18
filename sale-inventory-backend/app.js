@@ -18,11 +18,7 @@ app.use("/api/products", productRoutes);
 
 // customer api
 const customerRoutes = require("./routes/customer");
-app.use("/api/customer", customerRoutes);
-
-// order api
-const orderRoutes = require("./routes/order");
-app.use("/api/orders", orderRoutes);
+app.use("/api/customers", customerRoutes);
 
 // dashboard api
 const dashboardRoutes = require("./routes/dashboard");
