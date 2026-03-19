@@ -24,7 +24,7 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   // Dashboard totals
-  fetch("https://your-backend.onrender.com/api/dashboard", {
+  fetch("https://sale-inventory-management-system-1.onrender.com/api/dashboard", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
@@ -36,14 +36,14 @@ function Dashboard() {
     });
 
     // Daily sales
-  fetch("http://localhost:5000/api/dashboard/daily-sales", {
+  fetch("https://sale-inventory-management-system-1.onrender.com/api/dashboard/daily-sales", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
     .then(data => setDailySales(data));
 
   // Monthly sales
-  fetch("http://localhost:5000/api/dashboard/monthly-sales", {
+  fetch("https://sale-inventory-management-system-1.onrender.com/api/dashboard/monthly-sales", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())

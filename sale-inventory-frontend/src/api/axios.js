@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: "http://localhost:5000/api",
-  baseURL: "https://your-backend.onrender.com/api",
+  baseURL: "https://sale-inventory-management-system-1.onrender.com/api",
 });
 
 // Attach token automatically
