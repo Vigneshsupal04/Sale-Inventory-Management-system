@@ -24,7 +24,7 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   // Dashboard totals
-  fetch("http://your-backend.onrender.com/api/dashboard", {
+  fetch("https://your-backend.onrender.com/api/dashboard", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => res.json())
